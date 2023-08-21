@@ -221,7 +221,7 @@ class _BoardingScreenState extends State<BoardingScreen> {
                         padding: const EdgeInsets.only(right: 30.0),
                         child: InkWell(
                           onTap: () {
-                            Get.off(() => const ChooseApp());
+                            Get.off(() => const ChooseApp(),transition: Transition.fade);
                           },
                           child: CircleAvatar(
                             radius: 30,
