@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
 
 import 'SplashScreen.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const GetMaterialApp(debugShowCheckedModeBanner: false,home: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -13,11 +14,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const SplashScreen(),
+      home:  const SplashScreen(),
     );
   }
 }
