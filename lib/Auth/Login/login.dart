@@ -17,7 +17,6 @@ class Login extends StatefulWidget {
 TextEditingController emailTextEditingController = TextEditingController();
 TextEditingController passwordTextEditingController = TextEditingController();
 bool _passwordVisible = true;
-final _formKey = GlobalKey<FormState>();
 
 class _LoginState extends State<Login> {
   @override
@@ -30,7 +29,6 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: _formKey,
       body: SingleChildScrollView(
         child: Column(
           children: [
