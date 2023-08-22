@@ -38,6 +38,8 @@ dependencies:
   onboarding: ^3.1.0
   smooth_page_indicator: ^1.0.0+2
   get: ^4.6.5
+  fluttertoast: ^8.2.2
+  pinput: ^2.2.31
 
 dev_dependencies:
   flutter_test:
@@ -65,6 +67,7 @@ flutter:
   assets:
      - assets/
      - assets/Images/
+     - assets/Images/check.gif
      - assets/Icons/
 
   # An image asset can refer to one or more resolution-specific "variants", see

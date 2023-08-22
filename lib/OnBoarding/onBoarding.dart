@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mieny/Constans.dart';
-import 'package:mieny/OnBoarding/starterPages/chooseAppType.dart';
+import 'package:mieny/OnBoarding/starterPages/authStarter.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class BoardingScreen extends StatefulWidget {
@@ -221,7 +221,7 @@ class _BoardingScreenState extends State<BoardingScreen> {
                         padding: const EdgeInsets.only(right: 30.0),
                         child: InkWell(
                           onTap: () {
-                            Get.off(() => const ChooseApp(),transition: Transition.fade);
+                            Get.off(() => const AuthStarter(),transition: Transition.fade);
                           },
                           child: CircleAvatar(
                             radius: 30,

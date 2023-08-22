@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:get/get_navigation/src/routes/transitions_type.dart';
 
 import 'SplashScreen.dart';
 
 void main() {
-  runApp(const GetMaterialApp(debugShowCheckedModeBanner: false,home: MyApp()));
+  runApp(const GetMaterialApp(defaultTransition: Transition.fade,debugShowCheckedModeBanner: false,home: MyApp()));
 }
 
 class MyApp extends StatelessWidget {

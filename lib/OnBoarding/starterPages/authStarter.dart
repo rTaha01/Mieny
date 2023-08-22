@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get/get_utils/get_utils.dart';
 import 'package:mieny/Constans.dart';
-import 'package:mieny/OnBoarding/starterPages/signUp/authStarter.dart';
 
-class ChooseApp extends StatefulWidget {
-  const ChooseApp({super.key});
+import '../../Auth/Login/login.dart';
+
+class AuthStarter extends StatefulWidget {
+  const AuthStarter({super.key});
 
   @override
-  State<ChooseApp> createState() => _ChooseAppState();
+  State<AuthStarter> createState() => _AuthStarterState();
 }
 
-class _ChooseAppState extends State<ChooseApp> {
+class _AuthStarterState extends State<AuthStarter> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,25 +24,10 @@ class _ChooseAppState extends State<ChooseApp> {
           ),
           Padding(
             padding: const EdgeInsets.all(15.0),
-            child: Image.asset("assets/Images/option.png"),
+            child: Image.asset("assets/Images/login_card.png"),
           ),
           SizedBox(
-            height: context.heightTransformer(dividedBy: 5),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 30.0),
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: Text("Choose Your Account",
-                  style: Theme.of(context).textTheme.headlineSmall!.copyWith(
-                      fontWeight: FontWeight.w700,
-                      fontSize: 28,
-                      color: const Color(0xff0D0D0D),
-                      fontFamily: "Inter")),
-            ),
-          ),
-          SizedBox(
-            height: context.heightTransformer(dividedBy: 25),
+            height: context.heightTransformer(dividedBy: 4),
           ),
           Container(
             width: double.infinity,
@@ -52,12 +39,14 @@ class _ChooseAppState extends State<ChooseApp> {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(8.0),
               ),
-              onPressed: () {},
+              onPressed: () {
+                Get.to(() => const Login(),transition: Transition.fade);
+              },
               child: const SizedBox(
                 height: 50.0,
                 child: Center(
                   child: Text(
-                    "Public Boat",
+                    "Login",
                     style: TextStyle(
                         fontSize: 18.0,
                         fontWeight: FontWeight.w500,
@@ -80,14 +69,12 @@ class _ChooseAppState extends State<ChooseApp> {
             ),
             child: MaterialButton(
               textColor: primaryColor,
-              onPressed: () {
-                Get.to(()=> AuthStarter(),transition: Transition.fade);
-              },
+              onPressed: () {},
               child: SizedBox(
                 height: 50.0,
                 child: Center(
                   child: Text(
-                    "Private Boat",
+                    "Register Now",
                     style: TextStyle(
                         fontSize: 18.0,
                         fontWeight: FontWeight.w500,
