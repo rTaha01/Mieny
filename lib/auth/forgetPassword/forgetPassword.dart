@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:mieny/Auth/forgetPassword/codeInput/codeInput.dart';
 import 'package:mieny/Constans.dart';
 
-import '../Login/login.dart';
 
 class ResetScreen extends StatefulWidget {
   @override
@@ -15,28 +13,13 @@ class _ResetScreenState extends State<ResetScreen> {
   TextEditingController emailTextEditingController = TextEditingController();
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  String? _email;
 
   String? validateEmail(String? email) {
     if (email == null || email.isEmpty) {
-      Fluttertoast.showToast(
-          msg: "Please Enter Your Email",
-          toastLength: Toast.LENGTH_SHORT,
-          gravity: ToastGravity.BOTTOM,
-          timeInSecForIosWeb: 1,
-          backgroundColor: primaryColor,
-          textColor: Colors.white,
-          fontSize: 14.0);
+      Get.snackbar("oops!","Please Enter Your Email");
     } else if (!RegExp(r'^[\w-]+(\.[\w-]+)*@([a-z\d-]+\.)+[a-z]{2,}$')
         .hasMatch(email)) {
-      Fluttertoast.showToast(
-          msg: "Please Enter Valid Email",
-          toastLength: Toast.LENGTH_SHORT,
-          gravity: ToastGravity.BOTTOM,
-          timeInSecForIosWeb: 1,
-          backgroundColor: primaryColor,
-          textColor: Colors.white,
-          fontSize: 14.0);
+      Get.snackbar("oops!","Please Enter Valid Email");
     } else {
       Get.to(
         () => CodeInput(
@@ -44,6 +27,7 @@ class _ResetScreenState extends State<ResetScreen> {
         ),
       );
     }
+    return null;
   }
 
   void _submitForm() {
@@ -59,7 +43,7 @@ class _ResetScreenState extends State<ResetScreen> {
         backgroundColor: Colors.transparent,
         leading: InkWell(
           onTap: () {
-            Get.off(() => const Login(), transition: Transition.leftToRight);
+            Get.back();
           },
           child: const Padding(
             padding: EdgeInsets.all(10.0),
@@ -148,7 +132,6 @@ class _ResetScreenState extends State<ResetScreen> {
                   validator: validateEmail,
                   onChanged: (value) {
                     setState(() {
-                      _email = value;
                     });
                   },
                   decoration: InputDecoration(

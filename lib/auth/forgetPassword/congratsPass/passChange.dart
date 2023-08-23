@@ -25,7 +25,6 @@ class _VerifySuccessState extends State<VerifySuccess> {
            Center(
             child: Image.asset(
               "assets/Images/check.gif",
-              color: primaryColor,
               width: 380,
               height: 250,
             ),

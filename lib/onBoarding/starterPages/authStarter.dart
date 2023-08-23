@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_utils/get_utils.dart';
 import 'package:mieny/Constans.dart';
+import 'package:mieny/auth/register/register.dart';
 
 import '../../Auth/Login/login.dart';
 
@@ -69,7 +70,9 @@ class _AuthStarterState extends State<AuthStarter> {
             ),
             child: MaterialButton(
               textColor: primaryColor,
-              onPressed: () {},
+              onPressed: () {
+                Get.to(() => const Register(),transition: Transition.fade);
+              },
               child: SizedBox(
                 height: 50.0,
                 child: Center(

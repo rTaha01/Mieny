@@ -3,15 +3,15 @@ import 'package:get/get.dart';
 import 'package:get/get_core/get_core.dart';
 import 'package:mieny/Auth/forgetPassword/newPassword/NewPassword.dart';
 import 'package:mieny/Constans.dart';
+import 'package:mieny/Design/mainMap.dart';
 import 'package:pinput/pinput.dart';
-import '../forgetPassword.dart';
 
-class CodeInput extends StatefulWidget {
-  final String email;
-  const CodeInput({Key? key, required this.email}) : super(key: key);
+class phonePIN extends StatefulWidget {
+  final String numer;
+  const phonePIN({Key? key, required this.numer}) : super(key: key);
 
   @override
-  State<CodeInput> createState() => _CodeInputState();
+  State<phonePIN> createState() => _phonePINState();
 }
 
 final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -24,7 +24,7 @@ String? validatePin(String? pin) {
   if (pin == null || pin.isEmpty) {
 Get.snackbar("oops!","Please Enter the Code");
   } else {
-    Get.to(() => const NewPassword(), transition: Transition.leftToRight);
+    Get.to(() => const MapScreen(), transition: Transition.leftToRight);
   }
   return null;
 }
@@ -51,7 +51,7 @@ final submittedPinTheme = defaultPinTheme.copyWith(
   ),
 );
 
-class _CodeInputState extends State<CodeInput> {
+class _phonePINState extends State<phonePIN> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -103,7 +103,7 @@ class _CodeInputState extends State<CodeInput> {
                   alignment: Alignment.centerLeft,
                   child: RichText(
                     text: TextSpan(
-                      text: "We have sent a verification code\nto your given ",
+                      text: "check your sms inbox, we have sent\nyou the code at ",
                       style: const TextStyle(
                           fontSize: 18.0,
                           fontFamily: "Inter",
@@ -112,7 +112,7 @@ class _CodeInputState extends State<CodeInput> {
                           color: Colors.black),
                       children: <TextSpan>[
                         TextSpan(
-                            text: widget.email,
+                            text: widget.numer,
                             style: TextStyle(
                                 fontSize: 18.0,
                                 fontFamily: "Inter",
@@ -179,38 +179,28 @@ class _CodeInputState extends State<CodeInput> {
               ),
               Row(
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 25),
-                    child: TextButton(
-                        onPressed: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => ResetScreen()));
-                        },
-                        child: const Text(
-                          "Edit Email ?",
+                  const Padding(
+                    padding: EdgeInsets.only(left: 30),
+                    child: Text(
+                          "Didn’t Receive a code? ",
                           style: TextStyle(
                               color: Colors.black,
                               fontFamily: "Inter",
                               fontWeight: FontWeight.w600),
-                        )),
+                        ),
                   ),
-                  SizedBox(
-                    width: context.widthTransformer(dividedBy: 3.3),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 25),
-                    child: TextButton(
-                        onPressed: () {
-                       Get.snackbar("DOne!", "Code Has Sent to your Given Email");
-                        },
-                        child: Text(
-                          "Resend code!",
-                          style: TextStyle(
-                              color: primaryColor,
-                              fontFamily: "Inter",
-                              fontWeight: FontWeight.w600),
-                        )),
-                  ),
+                  TextButton(
+                      onPressed: () {
+                     Get.snackbar("Done!", "Code Has Sent to your Given Email");
+                      },
+                      child: Text(
+                        "Resend code!",
+                        style: TextStyle(
+                            color: primaryColor,
+                            fontFamily: "Inter",
+                            fontSize: 17,
+                            fontWeight: FontWeight.w700),
+                      )),
                 ],
               )
             ],

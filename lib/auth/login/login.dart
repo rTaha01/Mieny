@@ -1,11 +1,11 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:mieny/Constans.dart';
 
 import '../../Design/mainMap.dart';
 import '../forgetPassword/forgetPassword.dart';
+import '../register/register.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -19,6 +19,7 @@ TextEditingController passwordTextEditingController = TextEditingController();
 bool _passwordVisible = true;
 
 class _LoginState extends State<Login> {
+
   @override
   void dispose() {
     emailTextEditingController.dispose();
@@ -41,6 +42,7 @@ class _LoginState extends State<Login> {
                 "Log In",
                 style: TextStyle(
                     fontSize: 25,
+                    fontFamily: "Inter",
                     fontWeight: FontWeight.w500,
                     color: Colors.black),
               ),
@@ -60,7 +62,7 @@ class _LoginState extends State<Login> {
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(8),
                       borderSide:
-                          const BorderSide(color: Colors.black12, width: 0.5),
+                          const BorderSide(color: Colors.black12, width: 0.8),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(8),
@@ -68,7 +70,7 @@ class _LoginState extends State<Login> {
                     ),
                     hintText: 'hello@company.com',
                     hintStyle:
-                        const TextStyle(color: Colors.grey, fontSize: 12)),
+                        const TextStyle(color: Colors.grey, fontSize: 12,fontFamily: "Inter")),
                 style: const TextStyle(fontSize: 14.0),
               ),
             ),
@@ -86,7 +88,7 @@ class _LoginState extends State<Login> {
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(8),
                       borderSide:
-                          const BorderSide(color: Colors.black12, width: 0.5),
+                          const BorderSide(color: Colors.black12, width: 0.8),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(8),
@@ -109,7 +111,7 @@ class _LoginState extends State<Login> {
                     ),
                     hintText: 'Password',
                     hintStyle:
-                        const TextStyle(color: Colors.grey, fontSize: 12)),
+                        const TextStyle(color: Colors.grey, fontSize: 12,fontFamily: "Inter")),
                 style: const TextStyle(fontSize: 14.0),
               ),
             ),
@@ -119,13 +121,14 @@ class _LoginState extends State<Login> {
                 alignment: Alignment.centerRight,
                 child: TextButton(
                     onPressed: () {
-                      Get.to(() =>  ResetScreen());
+                      Get.to(() => ResetScreen());
                     },
                     child: Text(
                       'Forget Password',
                       style: TextStyle(
                           color: primaryColor,
                           fontSize: 11,
+                          fontFamily: "Inter",
                           fontWeight: FontWeight.w500),
                     )),
               ),
@@ -145,7 +148,7 @@ class _LoginState extends State<Login> {
                 ),
                 onPressed: () {
                   Get.to(() => const MapScreen(),
-                      duration: 1.seconds, transition: Transition.leftToRight);
+                      duration: 1.seconds,);
                   if (kDebugMode) {
                     print(emailTextEditingController.text.trim());
                   }
@@ -160,6 +163,7 @@ class _LoginState extends State<Login> {
                       "Login",
                       style: TextStyle(
                           fontSize: 18.0,
+                          fontFamily: "Inter",
                           fontWeight: FontWeight.w500,
                           color: Colors.white),
                     ),
@@ -182,11 +186,12 @@ class _LoginState extends State<Login> {
             ),
             GestureDetector(
                 onTap: () {
-
+                  Get.to(() => const Register(),transition: Transition.fade);
                 },
                 child: Text("REGISTER",
                     style: TextStyle(
                         letterSpacing: 2,
+                        fontFamily: "Inter",
                         fontWeight: FontWeight.w600,
                         color: primaryColor))),
             const SizedBox(
@@ -201,9 +206,5 @@ class _LoginState extends State<Login> {
         ),
       ),
     );
-  }
-
-  displayToastMessage(String message, BuildContext context) {
-    Fluttertoast.showToast(msg: message);
   }
 }
