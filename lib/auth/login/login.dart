@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:mieny/Constans.dart';
 
 import '../../Design/mainMap.dart';
+import '../../design/navBar/navBar.dart';
 import '../forgetPassword/forgetPassword.dart';
 import '../register/register.dart';
 
@@ -147,7 +148,7 @@ class _LoginState extends State<Login> {
                   borderRadius: BorderRadius.circular(10.0),
                 ),
                 onPressed: () {
-                  Get.to(() => const MapScreen(),
+                  Get.to(() =>  const NavBar(),
                       duration: 1.seconds,);
                   if (kDebugMode) {
                     print(emailTextEditingController.text.trim());

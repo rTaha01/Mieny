@@ -40,6 +40,9 @@ dependencies:
   get: ^4.6.5
   pinput: ^2.2.31
   country_code_picker:
+  google_maps_flutter: ^2.4.0
+  geolocator: ^7.6.2
+  geocoding: ^2.0.0
 
 dev_dependencies:
   flutter_test:

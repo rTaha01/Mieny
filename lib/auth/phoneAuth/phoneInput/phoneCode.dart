@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/get_core.dart';
-import 'package:mieny/Auth/forgetPassword/newPassword/NewPassword.dart';
 import 'package:mieny/Constans.dart';
 import 'package:mieny/Design/mainMap.dart';
 import 'package:pinput/pinput.dart';
