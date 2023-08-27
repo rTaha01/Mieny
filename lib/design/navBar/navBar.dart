@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mieny/Constans.dart';
 import 'package:mieny/Design/mainMap.dart';
+import 'package:mieny/design/Notification/notificationPage.dart';
+import 'package:mieny/design/Profile/profilePage.dart';
 
 
 class NavBar extends StatefulWidget {
@@ -74,7 +76,7 @@ class _NavBarState extends State<NavBar> {
                   minWidth: 50,
                   onPressed: () {
                     setState(() {
-                      currentScreen = const MapScreen();
+                      currentScreen = const NotificationPage();
 
                       currenttab = 1;
                     });
@@ -108,7 +110,7 @@ class _NavBarState extends State<NavBar> {
                   minWidth: 40,
                   onPressed: () {
                     setState(() {
-                      currentScreen = const MapScreen();
+                      currentScreen = const ProfilePage();
                       currenttab = 2;
                     });
                   },
@@ -116,11 +118,11 @@ class _NavBarState extends State<NavBar> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Image.asset(
-                        "assets/Icons/Profile.png",
-                        height: 35,
-                        color: currenttab == 2
-                            ? primaryColor
-                            : Colors.black
+                          "assets/Icons/Profile.png",
+                          height: 35,
+                          color: currenttab == 2
+                              ? primaryColor
+                              : Colors.black
                       ),
                       const SizedBox(width: 6,),
                       Text(

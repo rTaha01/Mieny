@@ -5,29 +5,40 @@ import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class MapScreen extends StatefulWidget {
-  const MapScreen({Key? key}) : super(key: key);
+  const MapScreen({
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<MapScreen> createState() => _MapScreenState();
 }
 
 class _MapScreenState extends State<MapScreen> {
+  ScrollController? _controller;
   GoogleMapController? mapController;
   LatLng? userLocation;
   Uint8List? userIcon;
 
   static const CameraPosition _kGooglePlex = CameraPosition(
     target: LatLng(2.671783, 72.891455),
-    zoom: 14,
+    zoom: 16,
   );
 
   final List<Marker> _markers = <Marker>[];
+  String selectedFilter = 'All Vehicles';
+
+  void _updateFilter(String filter) {
+    setState(() {
+      selectedFilter = filter;
+    });
+  }
 
   @override
   void initState() {
     super.initState();
     _getCurrentLocation();
     _addMarkers();
+    _controller != ScrollController();
   }
 
   Future<void> _addMarkers() async {
@@ -81,12 +92,16 @@ class _MapScreenState extends State<MapScreen> {
 
       mapController?.animateCamera(CameraUpdate.newLatLngZoom(
         userLocation!,
-        15.0,
+        14.0,
       ));
     } catch (e) {
-      Get.snackbar("Error!", "Error fetching location: $e");
       print('Error fetching location: $e');
     }
+  }
+  @override
+  void dispose() {
+   _controller?.dispose();
+    super.dispose();
   }
 
   @override
@@ -94,25 +109,65 @@ class _MapScreenState extends State<MapScreen> {
     return Scaffold(
       body: Stack(
         children: [
-          GoogleMap(
-            mapType: MapType.normal,
-            zoomControlsEnabled: false,
-            myLocationButtonEnabled: false,
-            initialCameraPosition: _kGooglePlex,
-            markers: userLocation != null
-                ? {
-              Marker(
-                markerId: const MarkerId('user_location'),
-                position: userLocation!,
-                icon: BitmapDescriptor.fromBytes(userIcon!),
-                infoWindow: const InfoWindow(title: 'Your Location'),
-              ),
-              ..._markers,
-            }
-                : {},
-            onMapCreated: (GoogleMapController controller) {
-              mapController = controller;
-            },
+          GestureDetector(
+            onTap: () {},
+            child: GoogleMap(
+              mapType: MapType.normal,
+              zoomControlsEnabled: false,
+              myLocationButtonEnabled: false,
+              initialCameraPosition: _kGooglePlex,
+              markers: userLocation != null
+                  ? {
+                      Marker(
+                        markerId: const MarkerId('user_location'),
+                        position: userLocation!,
+                        icon: BitmapDescriptor.fromBytes(userIcon!),
+                        infoWindow: const InfoWindow(title: 'Your Location'),
+                      ),
+                      ..._markers,
+                    }
+                  : {},
+              onMapCreated: (GoogleMapController controller) {
+                mapController = controller;
+
+              },
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 50.0,left: 380),
+            child: IconButton(
+              onPressed: () {
+                showMenu(
+                  context: context,
+                  position: RelativeRect.fromLTRB(
+                    MediaQuery.of(context).size.width - 50,
+                    kToolbarHeight,
+                    0,
+                    0,
+                  ),
+                  items: [
+                    const PopupMenuItem(
+                      value: 'All Vehicles',
+                      child: Text('All Vehicles'),
+                    ),
+                    const PopupMenuItem(
+                      value: 'Favorite Vehicles',
+                      child: Text('Favorite Vehicles'),
+                    ),
+                    const PopupMenuItem(
+                      value: 'Other Option',
+                      child: Text('Other Option'),
+                    ),
+                  ],
+                ).then((selectedValue) {
+                  if (selectedValue != null) {
+                    // Update the selected filter when an option is chosen
+                    _updateFilter(selectedValue);
+                  }
+                });
+              },
+              icon: const Icon(Icons.filter_list),
+            ),
           ),
         ],
       ),

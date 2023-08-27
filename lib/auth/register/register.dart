@@ -43,32 +43,6 @@ class _RegisterState extends State<Register> {
             const SizedBox(
               height: 20,
             ),
-            const Align(
-              alignment: Alignment.center,
-              child: Text(
-                "O R",
-                style: TextStyle(
-                  fontFamily: "Inter",
-                    fontSize: 11,
-                    fontWeight: FontWeight.w500,
-                    color: Color(0xff666666)),
-              ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            const Align(
-              alignment: Alignment.center,
-              child: Text(
-                "REGISTER AS EMPLOYEE",
-                style: TextStyle(
-                    fontFamily: "Inter",
-                    letterSpacing: 3,
-                    fontSize: 11,
-                    fontWeight: FontWeight.w500,
-                    color: Color(0xff666666)),
-              ),
-            ),
              SizedBox(
               height: context.heightTransformer(dividedBy: 15),
             ),
