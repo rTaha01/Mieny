@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class MapScreen extends StatefulWidget {
@@ -23,6 +22,23 @@ class _MapScreenState extends State<MapScreen> {
     target: LatLng(2.671783, 72.891455),
     zoom: 16,
   );
+  void _getCurrentLocation() async {
+    try {
+      Position position = await Geolocator.getCurrentPosition(
+          desiredAccuracy: LocationAccuracy.high);
+
+      setState(() {
+        userLocation = LatLng(position.latitude, position.longitude);
+      });
+
+      mapController?.animateCamera(CameraUpdate.newLatLngZoom(
+        userLocation!,
+        14.0,
+      ));
+    } catch (e) {
+      print('Error fetching location: $e');
+    }
+  }
 
   final List<Marker> _markers = <Marker>[];
   String selectedFilter = 'All Vehicles';
@@ -31,14 +47,6 @@ class _MapScreenState extends State<MapScreen> {
     setState(() {
       selectedFilter = filter;
     });
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    _getCurrentLocation();
-    _addMarkers();
-    _controller != ScrollController();
   }
 
   Future<void> _addMarkers() async {
@@ -81,26 +89,17 @@ class _MapScreenState extends State<MapScreen> {
     return data.buffer.asUint8List();
   }
 
-  void _getCurrentLocation() async {
-    try {
-      Position position = await Geolocator.getCurrentPosition(
-          desiredAccuracy: LocationAccuracy.high);
-
-      setState(() {
-        userLocation = LatLng(position.latitude, position.longitude);
-      });
-
-      mapController?.animateCamera(CameraUpdate.newLatLngZoom(
-        userLocation!,
-        14.0,
-      ));
-    } catch (e) {
-      print('Error fetching location: $e');
-    }
+  @override
+  void initState() {
+    super.initState();
+    _getCurrentLocation();
+    _addMarkers();
+    _controller != ScrollController();
   }
+
   @override
   void dispose() {
-   _controller?.dispose();
+    _controller?.dispose();
     super.dispose();
   }
 
@@ -129,12 +128,11 @@ class _MapScreenState extends State<MapScreen> {
                   : {},
               onMapCreated: (GoogleMapController controller) {
                 mapController = controller;
-
               },
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 50.0,left: 380),
+            padding: const EdgeInsets.only(top: 50.0, left: 380),
             child: IconButton(
               onPressed: () {
                 showMenu(
