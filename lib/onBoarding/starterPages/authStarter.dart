@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_utils/get_utils.dart';
 import 'package:mieny/Constans.dart';
-import 'package:mieny/auth/register/register.dart';
-
 import '../../Auth/Login/login.dart';
+import '../../Auth/admin/register.dart';
 
 class AuthStarter extends StatefulWidget {
   const AuthStarter({super.key});
@@ -77,7 +76,7 @@ class _AuthStarterState extends State<AuthStarter> {
                 height: 50.0,
                 child: Center(
                   child: Text(
-                    "Register Now",
+                    "Login As Admin",
                     style: TextStyle(
                         fontSize: 18.0,
                         fontWeight: FontWeight.w500,

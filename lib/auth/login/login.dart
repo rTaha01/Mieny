@@ -2,11 +2,9 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mieny/Constans.dart';
-
-import '../../Design/mainMap.dart';
 import '../../design/navBar/navBar.dart';
+import '../admin/register.dart';
 import '../forgetPassword/forgetPassword.dart';
-import '../register/register.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -181,7 +179,7 @@ class _LoginState extends State<Login> {
             const SizedBox(
               height: 20.0,
             ),
-            const Text("Don't have an account? "),
+            const Text("Login As Admin? "),
             const SizedBox(
               height: 10.0,
             ),
@@ -189,7 +187,7 @@ class _LoginState extends State<Login> {
                 onTap: () {
                   Get.to(() => const Register(),transition: Transition.fade);
                 },
-                child: Text("REGISTER",
+                child: Text("ADMIN",
                     style: TextStyle(
                         letterSpacing: 2,
                         fontFamily: "Inter",

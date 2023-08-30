@@ -32,7 +32,7 @@ class _RegisterState extends State<Register> {
             const Align(
               alignment: Alignment.center,
               child: Text(
-                "Register",
+                "Login As Admin",
                 style: TextStyle(
                     fontSize: 35,
                     fontFamily: "Inter",
@@ -41,35 +41,35 @@ class _RegisterState extends State<Register> {
               ),
             ),
             const SizedBox(
-              height: 20,
+              height: 120,
             ),
-             SizedBox(
-              height: context.heightTransformer(dividedBy: 15),
-            ),
-            Container(
-              height: MediaQuery.of(context).size.height * 0.06,
-              width: double.infinity,
-              margin: const EdgeInsets.only(left: 30, right: 30),
-              child: TextFormField(
-                controller: email,
-                keyboardType: TextInputType.emailAddress,
-                cursorColor: primaryColor,
-                decoration: InputDecoration(
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
-                      borderSide:
-                      const BorderSide(color: Colors.black12, width: 0.8),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
-                      borderSide: BorderSide(color: primaryColor, width: 1),
-                    ),
-                    hintText: 'Enter Your Name',
-                    hintStyle:
-                    const TextStyle(color: Colors.grey, fontSize: 12,fontFamily: "Inter")),
-                style: const TextStyle(fontSize: 14.0),
-              ),
-            ),
+            //  SizedBox(
+            //   height: context.heightTransformer(dividedBy: 15),
+            // ),
+            // Container(
+            //   height: MediaQuery.of(context).size.height * 0.06,
+            //   width: double.infinity,
+            //   margin: const EdgeInsets.only(left: 30, right: 30),
+            //   child: TextFormField(
+            //     controller: email,
+            //     keyboardType: TextInputType.emailAddress,
+            //     cursorColor: primaryColor,
+            //     decoration: InputDecoration(
+            //         enabledBorder: OutlineInputBorder(
+            //           borderRadius: BorderRadius.circular(8),
+            //           borderSide:
+            //           const BorderSide(color: Colors.black12, width: 0.8),
+            //         ),
+            //         focusedBorder: OutlineInputBorder(
+            //           borderRadius: BorderRadius.circular(8),
+            //           borderSide: BorderSide(color: primaryColor, width: 1),
+            //         ),
+            //         hintText: 'Enter Your Name',
+            //         hintStyle:
+            //         const TextStyle(color: Colors.grey, fontSize: 12,fontFamily: "Inter")),
+            //     style: const TextStyle(fontSize: 14.0),
+            //   ),
+            // ),
             const SizedBox(
               height: 20,
             ),
@@ -142,53 +142,53 @@ class _RegisterState extends State<Register> {
                 style: const TextStyle(fontSize: 14.0),
               ),
             ),
+            // const SizedBox(
+            //   height: 20,
+            // ),
+            // Container(
+            //   height: MediaQuery.of(context).size.height * 0.06,
+            //   margin: const EdgeInsets.only(left: 30, right: 30),
+            //   decoration: BoxDecoration(
+            //     color: Colors.white,
+            //     borderRadius: BorderRadius.circular(8),
+            //   ),
+            //   child: TextFormField(
+            //     controller: confirmPassword,
+            //     obscureText: _confirmpasswordVisible,
+            //     cursorColor: primaryColor,
+            //     decoration: InputDecoration(
+            //         enabledBorder: OutlineInputBorder(
+            //           borderRadius: BorderRadius.circular(8),
+            //           borderSide:
+            //           const BorderSide(color: Colors.black12, width: 0.8),
+            //         ),
+            //         focusedBorder: OutlineInputBorder(
+            //           borderRadius: BorderRadius.circular(8),
+            //           borderSide:
+            //           BorderSide(color: primaryColor, width: 1),
+            //         ),
+            //         suffixIcon: IconButton(
+            //           icon: Icon(
+            //             // Based on passwordVisible state choose the icon
+            //             _confirmpasswordVisible
+            //                 ? Icons.visibility_off
+            //                 : Icons.visibility,
+            //             color: primaryColor,
+            //           ),
+            //           onPressed: () {
+            //             // Update the state i.e. toggle the state of passwordVisible variable
+            //             setState(() {
+            //               _confirmpasswordVisible = !_confirmpasswordVisible;
+            //             });
+            //           },
+            //         ),
+            //         hintText: 'Confirm Password',
+            //         hintStyle: const TextStyle(color: Colors.grey, fontSize: 12)),
+            //     style: const TextStyle(fontSize: 14.0),
+            //   ),
+            // ),
             const SizedBox(
-              height: 20,
-            ),
-            Container(
-              height: MediaQuery.of(context).size.height * 0.06,
-              margin: const EdgeInsets.only(left: 30, right: 30),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: TextFormField(
-                controller: confirmPassword,
-                obscureText: _confirmpasswordVisible,
-                cursorColor: primaryColor,
-                decoration: InputDecoration(
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
-                      borderSide:
-                      const BorderSide(color: Colors.black12, width: 0.8),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
-                      borderSide:
-                      BorderSide(color: primaryColor, width: 1),
-                    ),
-                    suffixIcon: IconButton(
-                      icon: Icon(
-                        // Based on passwordVisible state choose the icon
-                        _confirmpasswordVisible
-                            ? Icons.visibility_off
-                            : Icons.visibility,
-                        color: primaryColor,
-                      ),
-                      onPressed: () {
-                        // Update the state i.e. toggle the state of passwordVisible variable
-                        setState(() {
-                          _confirmpasswordVisible = !_confirmpasswordVisible;
-                        });
-                      },
-                    ),
-                    hintText: 'Confirm Password',
-                    hintStyle: const TextStyle(color: Colors.grey, fontSize: 12)),
-                style: const TextStyle(fontSize: 14.0),
-              ),
-            ),
-            const SizedBox(
-              height: 20.0,
+              height: 40.0,
             ),
             Container(
               width: double.infinity,
@@ -216,7 +216,7 @@ class _RegisterState extends State<Register> {
                   height: 50.0,
                   child: Center(
                     child: Text(
-                      "Register",
+                      "Login As Admin",
                       style: TextStyle(
                           fontSize: 18.0,
                           fontFamily: "Inter",
@@ -231,7 +231,7 @@ class _RegisterState extends State<Register> {
             const SizedBox(
               height: 70.0,
             ),
-            const Text("Already have an account? "),
+            const Text("Login As USer? "),
             const SizedBox(
               height: 20.0,
             ),

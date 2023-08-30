@@ -3,6 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
+import '../Constans.dart';
+
 class MapScreen extends StatefulWidget {
   const MapScreen({
     Key? key,
@@ -61,7 +63,9 @@ class _MapScreenState extends State<MapScreen> {
         markerId: const MarkerId('marker1'),
         position: const LatLng(2.682199, 72.938015),
         icon: BitmapDescriptor.fromBytes(markerIcon1),
-        infoWindow: const InfoWindow(title: 'Marker 1'),
+        onTap: () {
+          _showMarkerDialog();
+        },
       ),
     );
 
@@ -70,7 +74,9 @@ class _MapScreenState extends State<MapScreen> {
         markerId: const MarkerId('marker2'),
         position: const LatLng(2.453092, 73.049524),
         icon: BitmapDescriptor.fromBytes(markerIcon2),
-        infoWindow: const InfoWindow(title: 'Marker 2'),
+        onTap: () {
+          _showMarkerDialog();
+        },
       ),
     );
 
@@ -79,7 +85,9 @@ class _MapScreenState extends State<MapScreen> {
         markerId: const MarkerId('marker3'),
         position: const LatLng(2.977815, 73.508957),
         icon: BitmapDescriptor.fromBytes(markerIcon3),
-        infoWindow: const InfoWindow(title: 'Marker 3'),
+        onTap: () {
+          _showMarkerDialog();
+        },
       ),
     );
   }
@@ -171,4 +179,265 @@ class _MapScreenState extends State<MapScreen> {
       ),
     );
   }
+
+  void _showMarkerDialog() {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) => Align(
+              alignment: Alignment.center,
+              child: Material(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(25)),
+                child: SizedBox(
+                  height: 250,
+                  width: 330,
+                  child: Column(
+                    children: [
+                      const SizedBox(
+                        height: 25,
+                      ),
+                      const Text(
+                        "Tracking Route",
+                        style: TextStyle(
+                            fontSize: 25.0,
+                            fontWeight: FontWeight.w700,
+                            fontFamily: "Inter",
+                            color: Colors.black),
+                        textAlign: TextAlign.center,
+                      ),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      Text("Show more details",
+                          style: TextStyle(
+                              fontSize: 13.0,
+                              fontWeight: FontWeight.w400,
+                              fontFamily: "Inter",
+                              color: primaryColor)),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Text("Male",
+                                  style: TextStyle(
+                                      fontSize: 11.0,
+                                      fontWeight: FontWeight.w400,
+                                      fontFamily: "Inter",
+                                      color: Colors.grey.shade400)),
+                              const Text("09:00",
+                                  style: TextStyle(
+                                      fontSize: 20.0,
+                                      fontWeight: FontWeight.w700,
+                                      fontFamily: "Inter",
+                                      color: Colors.black)),
+                            ],
+                          ),
+                          const SizedBox(
+                            width: 20,
+                          ),
+                          Container(
+                            height: 50,
+                            width: 1.5,
+                            color: Colors.grey.shade300,
+                          ),
+                          const SizedBox(
+                            width: 20,
+                          ),
+                          const Icon(
+                            Icons.arrow_forward,
+                            color: Colors.black,
+                            size: 35,
+                          ),
+                          const SizedBox(
+                            width: 20,
+                          ),
+                          Container(
+                            height: 50,
+                            width: 1.5,
+                            color: Colors.grey.shade300,
+                          ),
+                          const SizedBox(
+                            width: 20,
+                          ),
+                          Column(
+                            children: [
+                              Text("Fuvahmulah",
+                                  style: TextStyle(
+                                      fontSize: 11.0,
+                                      fontWeight: FontWeight.w400,
+                                      fontFamily: "Inter",
+                                      color: Colors.grey.shade400)),
+                              const Text("23:00",
+                                  style: TextStyle(
+                                      fontSize: 20.0,
+                                      fontWeight: FontWeight.w700,
+                                      fontFamily: "Inter",
+                                      color: Colors.black)),
+                            ],
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Text("Tracking",
+                                  style: TextStyle(
+                                      fontSize: 11.0,
+                                      fontWeight: FontWeight.w400,
+                                      fontFamily: "Inter",
+                                      color: Colors.grey.shade400)),
+                              const Text("Car",
+                                  style: TextStyle(
+                                      fontSize: 20.0,
+                                      fontWeight: FontWeight.w700,
+                                      fontFamily: "Inter",
+                                      color: Colors.black)),
+                            ],
+                          ),
+                          const SizedBox(
+                            width: 28,
+                          ),
+                          Container(
+                            height: 50,
+                            width: 1.5,
+                            color: Colors.grey.shade300,
+                          ),
+                          const SizedBox(
+                            width: 19,
+                          ),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Text("Active",
+                                  style: TextStyle(
+                                      fontSize: 11.0,
+                                      fontWeight: FontWeight.w400,
+                                      fontFamily: "Inter",
+                                      color: Colors.grey.shade400)),
+                              const Text("01",
+                                  style: TextStyle(
+                                      fontSize: 20.0,
+                                      fontWeight: FontWeight.w700,
+                                      fontFamily: "Inter",
+                                      color: Colors.black)),
+                            ],
+                          ),
+                          const SizedBox(
+                            width: 20,
+                          ),
+                          Container(
+                            height: 50,
+                            width: 1.5,
+                            color: Colors.grey.shade300,
+                          ),
+                          const SizedBox(
+                            width: 20,
+                          ),
+                          Column(
+                            children: [
+                              Text("Arrival",
+                                  style: TextStyle(
+                                      fontSize: 11.0,
+                                      fontWeight: FontWeight.w400,
+                                      fontFamily: "Inter",
+                                      color: Colors.grey.shade400)),
+                              const Text("10 min",
+                                  style: TextStyle(
+                                      fontSize: 20.0,
+                                      fontWeight: FontWeight.w700,
+                                      fontFamily: "Inter",
+                                      color: Colors.black)),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ));
+  }
 }
+//
+//
+// return AlertDialog(
+// title: const Text(
+// "Tracking Route",
+// style: TextStyle(
+// fontSize: 25.0,
+// fontWeight: FontWeight.w700,
+// fontFamily: "Inter",
+// color: Colors.black),
+// textAlign: TextAlign.center,
+// ),
+// content: Container(
+// height: 200,
+// child: Column(
+// children: [
+// Row(
+// children: [
+// Column(
+// children: [
+// Text("Male",
+// style: TextStyle(
+// fontSize: 11.0,
+// fontWeight: FontWeight.w400,
+// fontFamily: "Inter",
+// color: Colors.grey.shade400)),
+// const Text("09:00",
+// style: TextStyle(
+// fontSize: 20.0,
+// fontWeight: FontWeight.w700,
+// fontFamily: "Inter",
+// color: Colors.black)),
+// ],
+// ),
+// const SizedBox(width: 20,
+// ),
+// Container(height: 50,width: 1.5,color: Colors.grey.shade300,),
+// const SizedBox(width: 20,
+// ),
+// const Icon(Icons.arrow_forward,color: Colors.black,size: 35,),
+// const SizedBox(width: 20,
+// ),
+// Container(height: 50,width: 1.5,color: Colors.grey.shade300,),
+// const SizedBox(width: 20,
+// ),
+// Column(
+// children: [
+// Text("Fuvahmulah",
+// style: TextStyle(
+// fontSize: 11.0,
+// fontWeight: FontWeight.w400,
+// fontFamily: "Inter",
+// color: Colors.grey.shade400)),
+// const Text("23:00",
+// style: TextStyle(
+// fontSize: 20.0,
+// fontWeight: FontWeight.w700,
+// fontFamily: "Inter",
+// color: Colors.black)),
+// ],
+// ),
+// ],
+// )
+// ],
+// ),
+// ),
+// );

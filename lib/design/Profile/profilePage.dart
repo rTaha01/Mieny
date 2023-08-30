@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mieny/Auth/Login/login.dart';
+import 'package:mieny/design/Profile/profileDetail/profileDetail.dart';
 import 'package:mieny/widgets/profileWidget.dart';
 
 import '../../Constans.dart';
@@ -37,10 +38,15 @@ class _ProfilePageState extends State<ProfilePage> {
           SizedBox(
             height: context.heightTransformer(dividedBy: 10),
           ),
-          const SizedBox(
-              height: 45,
-              child: ProfileWidget(
-                  text: "Profile", Icon: (Icons.account_circle_outlined))),
+          InkWell(
+            onTap: () {
+              Get.to(() => const ProfileDetails());
+            },
+            child: const SizedBox(
+                height: 45,
+                child: ProfileWidget(
+                    text: "Profile", Icon: (Icons.account_circle_outlined))),
+          ),
           SizedBox(
             height: context.heightTransformer(dividedBy: 30),
           ),
@@ -84,17 +90,15 @@ class _ProfilePageState extends State<ProfilePage> {
           ),
           const SizedBox(
               height: 45,
-              child: ProfileWidget(
-                  text: "Language", Icon: (Icons.language))),
+              child: ProfileWidget(text: "Language", Icon: (Icons.language))),
           SizedBox(
             height: context.heightTransformer(dividedBy: 30),
           ),
           const SizedBox(
               height: 45,
-              child: ProfileWidget(
-                  text: "Setting", Icon: (Icons.settings))),
+              child: ProfileWidget(text: "Setting", Icon: (Icons.settings))),
           SizedBox(
-            height: context.heightTransformer(dividedBy: 6),
+            height: context.heightTransformer(dividedBy: 8),
           ),
           Align(
             alignment: Alignment.bottomCenter,
@@ -112,14 +116,14 @@ class _ProfilePageState extends State<ProfilePage> {
     );
   }
 }
+
 void showAlertDialog(BuildContext context) {
   showDialog(
     context: context,
     builder: (ctx) => Align(
       //alignment: Alignment.bottomCenter,
       child: Material(
-        shape:
-        RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
         child: SizedBox(
           height: 170,
           width: 250,
@@ -128,7 +132,11 @@ void showAlertDialog(BuildContext context) {
               const SizedBox(
                 height: 8,
               ),
-              Icon(Icons.login_outlined,color: primaryColor,size: 40,),
+              Icon(
+                Icons.login_outlined,
+                color: primaryColor,
+                size: 40,
+              ),
               const SizedBox(
                 height: 15,
               ),
@@ -136,7 +144,7 @@ void showAlertDialog(BuildContext context) {
                 'Are You Sure That You Want\nto Logout?',
                 textAlign: TextAlign.center,
                 style:
-                TextStyle(color: Colors.black, fontWeight: FontWeight.w500),
+                    TextStyle(color: Colors.black, fontWeight: FontWeight.w500),
               ),
               const Divider(
                 height: 35,
@@ -160,7 +168,7 @@ void showAlertDialog(BuildContext context) {
                       onTap: () {
                         Get.off(() => const Login());
                       },
-                      child:  Text(
+                      child: Text(
                         'Yes',
                         style: TextStyle(color: primaryColor, fontSize: 15),
                       )),

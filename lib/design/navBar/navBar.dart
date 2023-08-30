@@ -35,7 +35,7 @@ class _NavBarState extends State<NavBar> {
           shape: const CircularNotchedRectangle(),
           notchMargin: 10,
           child: SizedBox(
-            height: 60,
+            height: 50,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
