@@ -19,6 +19,76 @@ class _MapScreenState extends State<MapScreen> {
   GoogleMapController? mapController;
   LatLng? userLocation;
   Uint8List? userIcon;
+
+  static const CameraPosition _kGooglePlex = CameraPosition(
+    target: LatLng(2.671783, 72.891455),
+    zoom: 16,
+  );
+
+  final List<Marker> _markers = <Marker>[];
+  String selectedFilter = 'All Vehicles';
+
+  void _updateFilter(String filter) {
+    setState(() {
+      selectedFilter = filter;
+    });
+  }
+
+  Future<void> _addMarkers() async {
+    try {
+      final Uint8List markerIcon1 = await _getMarkerIcon(
+          'assets/Icons/ship.png');
+      final Uint8List markerIcon2 = await _getMarkerIcon(
+          'assets/Icons/bike.png');
+      final Uint8List markerIcon3 = await _getMarkerIcon(
+          'assets/Icons/car.png');
+
+      userIcon = await _getMarkerIcon('assets/Icons/location.png');
+
+      _markers.add(
+        Marker(
+          markerId: const MarkerId('marker1'),
+          position: const LatLng(2.682199, 72.938015),
+          icon: BitmapDescriptor.fromBytes(markerIcon1),
+          onTap: () {
+            _showMarkerDialog();
+          },
+        ),
+      );
+
+      _markers.add(
+        Marker(
+          markerId: const MarkerId('marker2'),
+          position: const LatLng(2.453092, 73.049524),
+          icon: BitmapDescriptor.fromBytes(markerIcon2),
+          onTap: () {
+            _showMarkerDialog();
+          },
+        ),
+      );
+
+      _markers.add(
+        Marker(
+          markerId: const MarkerId('marker3'),
+          position: const LatLng(2.977815, 73.508957),
+          icon: BitmapDescriptor.fromBytes(markerIcon3),
+          onTap: () {
+            _showMarkerDialog();
+          },
+        ),
+      );
+    } catch(e){
+      print('Error loading marker icons: $e');
+    }
+  }
+
+  Future<Uint8List> _getMarkerIcon(String path) async {
+    final ByteData data = await rootBundle.load(path);
+    print('Asset path: $path');
+    print('ByteData length: ${data.lengthInBytes}');
+    return data.buffer.asUint8List();
+  }
+
   void _getCurrentLocation() async {
     try {
       Position position = await Geolocator.getCurrentPosition(
@@ -35,66 +105,6 @@ class _MapScreenState extends State<MapScreen> {
     } catch (e) {
       print('Error fetching location: $e');
     }
-  }
-  static const CameraPosition _kGooglePlex = CameraPosition(
-    target: LatLng(2.671783, 72.891455),
-    zoom: 16,
-  );
-
-
-  final List<Marker> _markers = <Marker>[];
-  String selectedFilter = 'All Vehicles';
-
-  void _updateFilter(String filter) {
-    setState(() {
-      selectedFilter = filter;
-    });
-  }
-
-  Future<void> _addMarkers() async {
-    final Uint8List markerIcon1 = await _getMarkerIcon('assets/Icons/ship.png');
-    final Uint8List markerIcon2 = await _getMarkerIcon('assets/Icons/bike.png');
-    final Uint8List markerIcon3 = await _getMarkerIcon('assets/Icons/car.png');
-
-    userIcon = await _getMarkerIcon('assets/Icons/location.png');
-
-    _markers.add(
-      Marker(
-        markerId: const MarkerId('marker1'),
-        position: const LatLng(2.682199, 72.938015),
-        icon: BitmapDescriptor.fromBytes(markerIcon1),
-        onTap: () {
-          _showMarkerDialog();
-        },
-      ),
-    );
-
-    _markers.add(
-      Marker(
-        markerId: const MarkerId('marker2'),
-        position: const LatLng(2.453092, 73.049524),
-        icon: BitmapDescriptor.fromBytes(markerIcon2),
-        onTap: () {
-          _showMarkerDialog();
-        },
-      ),
-    );
-
-    _markers.add(
-      Marker(
-        markerId: const MarkerId('marker3'),
-        position: const LatLng(2.977815, 73.508957),
-        icon: BitmapDescriptor.fromBytes(markerIcon3),
-        onTap: () {
-          _showMarkerDialog();
-        },
-      ),
-    );
-  }
-
-  Future<Uint8List> _getMarkerIcon(String path) async {
-    final ByteData data = await rootBundle.load(path);
-    return data.buffer.asUint8List();
   }
 
   @override
@@ -167,7 +177,6 @@ class _MapScreenState extends State<MapScreen> {
                   ],
                 ).then((selectedValue) {
                   if (selectedValue != null) {
-                    // Update the selected filter when an option is chosen
                     _updateFilter(selectedValue);
                   }
                 });
@@ -374,70 +383,3 @@ class _MapScreenState extends State<MapScreen> {
             ));
   }
 }
-//
-//
-// return AlertDialog(
-// title: const Text(
-// "Tracking Route",
-// style: TextStyle(
-// fontSize: 25.0,
-// fontWeight: FontWeight.w700,
-// fontFamily: "Inter",
-// color: Colors.black),
-// textAlign: TextAlign.center,
-// ),
-// content: Container(
-// height: 200,
-// child: Column(
-// children: [
-// Row(
-// children: [
-// Column(
-// children: [
-// Text("Male",
-// style: TextStyle(
-// fontSize: 11.0,
-// fontWeight: FontWeight.w400,
-// fontFamily: "Inter",
-// color: Colors.grey.shade400)),
-// const Text("09:00",
-// style: TextStyle(
-// fontSize: 20.0,
-// fontWeight: FontWeight.w700,
-// fontFamily: "Inter",
-// color: Colors.black)),
-// ],
-// ),
-// const SizedBox(width: 20,
-// ),
-// Container(height: 50,width: 1.5,color: Colors.grey.shade300,),
-// const SizedBox(width: 20,
-// ),
-// const Icon(Icons.arrow_forward,color: Colors.black,size: 35,),
-// const SizedBox(width: 20,
-// ),
-// Container(height: 50,width: 1.5,color: Colors.grey.shade300,),
-// const SizedBox(width: 20,
-// ),
-// Column(
-// children: [
-// Text("Fuvahmulah",
-// style: TextStyle(
-// fontSize: 11.0,
-// fontWeight: FontWeight.w400,
-// fontFamily: "Inter",
-// color: Colors.grey.shade400)),
-// const Text("23:00",
-// style: TextStyle(
-// fontSize: 20.0,
-// fontWeight: FontWeight.w700,
-// fontFamily: "Inter",
-// color: Colors.black)),
-// ],
-// ),
-// ],
-// )
-// ],
-// ),
-// ),
-// );
