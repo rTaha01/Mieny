@@ -3,7 +3,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:mieny/Design/mainMap.dart';
 import 'package:mieny/auth/phoneAuth/phoneInput/phoneCode.dart';
 
 import '../../Constans.dart';
@@ -166,23 +165,6 @@ class _ChooseNumberState extends State<ChooseNumber> {
               ),
               const SizedBox(
                 height: 60,
-              ),
-              InkWell(
-                onTap: () {
-                  Get.to(() => const MapScreen());
-                },
-                child: const Align(
-                  alignment: Alignment.center,
-                  child: Text(
-                    "SKIP FOR NOW",
-                    style: TextStyle(
-                        fontFamily: "Inter",
-                        letterSpacing: 2,
-                        fontSize: 11,
-                        fontWeight: FontWeight.w500,
-                        color: Color(0xff666666)),
-                  ),
-                ),
               ),
             ],
           ),

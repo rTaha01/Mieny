@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_utils/get_utils.dart';
+import 'package:mieny/auth/admin/vehical.dart';
 
 import '../../Constans.dart';
 import '../Login/login.dart';
@@ -201,7 +202,7 @@ class _RegisterState extends State<Register> {
                   borderRadius: BorderRadius.circular(10.0),
                 ),
                 onPressed: () {
-                  Get.to(() => const ChooseNumber(),
+                  Get.to(() => const NewVehicle(),
                     duration: 1.seconds,);
                   if (kDebugMode) {
                     print(email.text.trim());

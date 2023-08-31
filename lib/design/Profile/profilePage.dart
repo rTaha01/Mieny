@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mieny/Auth/Login/login.dart';
 import 'package:mieny/design/Profile/profileDetail/profileDetail.dart';
+import 'package:mieny/design/Profile/profileDetail/vehical.dart';
 import 'package:mieny/widgets/profileWidget.dart';
 
 import '../../Constans.dart';
@@ -50,9 +51,14 @@ class _ProfilePageState extends State<ProfilePage> {
           SizedBox(
             height: context.heightTransformer(dividedBy: 30),
           ),
-          const SizedBox(
-              height: 45,
-              child: ProfileWidget(text: "Vehicles", Icon: (Icons.pedal_bike))),
+          InkWell(
+            onTap: () {
+              Get.to(() => const Vehicle());
+            },
+            child: const SizedBox(
+                height: 45,
+                child: ProfileWidget(text: "Vehicles", Icon: (Icons.pedal_bike))),
+          ),
           SizedBox(
             height: context.heightTransformer(dividedBy: 30),
           ),

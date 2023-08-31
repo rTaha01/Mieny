@@ -19,11 +19,6 @@ class _MapScreenState extends State<MapScreen> {
   GoogleMapController? mapController;
   LatLng? userLocation;
   Uint8List? userIcon;
-
-  static const CameraPosition _kGooglePlex = CameraPosition(
-    target: LatLng(2.671783, 72.891455),
-    zoom: 16,
-  );
   void _getCurrentLocation() async {
     try {
       Position position = await Geolocator.getCurrentPosition(
@@ -41,6 +36,11 @@ class _MapScreenState extends State<MapScreen> {
       print('Error fetching location: $e');
     }
   }
+  static const CameraPosition _kGooglePlex = CameraPosition(
+    target: LatLng(2.671783, 72.891455),
+    zoom: 16,
+  );
+
 
   final List<Marker> _markers = <Marker>[];
   String selectedFilter = 'All Vehicles';
