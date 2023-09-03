@@ -15,7 +15,6 @@ class _add_stafState extends State<add_staf> {
       TextEditingController();
   TextEditingController salaryTextEditingController = TextEditingController();
   TextEditingController ContactTextEditingController = TextEditingController();
-  bool _passwordVisible = true;
   @override
   void dispose() {
     emailTextEditingController.dispose();
@@ -40,7 +39,7 @@ class _add_stafState extends State<add_staf> {
               size: 30,
             )),
         title: const Text(
-          'Add Staff',
+          'Vehicle',
           style: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.w700,

@@ -30,7 +30,7 @@ class _VehicleState extends State<Vehicle> {
               size: 30,
             )),
         title: const Text(
-          'Staff',
+          'Vehicle',
           style: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.w600,

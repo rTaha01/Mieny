@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mieny/Auth/Login/login.dart';
+import 'package:mieny/design/Profile/languagePage.dart';
 import 'package:mieny/design/Profile/profileDetail/profileDetail.dart';
 import 'package:mieny/design/Profile/profileDetail/vehical.dart';
+import 'package:mieny/design/Profile/staff/StaffPage.dart';
 import 'package:mieny/widgets/profileWidget.dart';
 
 import '../../Constans.dart';
+import 'Term&Services.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -62,17 +65,28 @@ class _ProfilePageState extends State<ProfilePage> {
           SizedBox(
             height: context.heightTransformer(dividedBy: 30),
           ),
-          const SizedBox(
-              height: 45,
-              child:
-                  ProfileWidget(text: "Version", Icon: (Icons.phone_android))),
+          InkWell(
+
+            onTap: (){
+              Get.to(() => const StaffPage());
+            },
+            child: const SizedBox(
+                height: 45,
+                child:
+                    ProfileWidget(text: "Staff", Icon: (Icons.people_alt))),
+          ),
           SizedBox(
             height: context.heightTransformer(dividedBy: 30),
           ),
-          const SizedBox(
-              height: 45,
-              child: ProfileWidget(
-                  text: "Terms of Service", Icon: (Icons.privacy_tip))),
+          InkWell(
+            onTap: (){
+              Get.to(()=> TermsAndServicesPage());
+            },
+            child: const SizedBox(
+                height: 45,
+                child: ProfileWidget(
+                    text: "Terms of Service", Icon: (Icons.privacy_tip))),
+          ),
           SizedBox(
             height: context.heightTransformer(dividedBy: 30),
           ),
@@ -94,17 +108,23 @@ class _ProfilePageState extends State<ProfilePage> {
           SizedBox(
             height: context.heightTransformer(dividedBy: 30),
           ),
-          const SizedBox(
-              height: 45,
-              child: ProfileWidget(text: "Language", Icon: (Icons.language))),
+          InkWell(
+            onTap: () {
+              Get.to(() => const LanguagePage());
+            },
+
+            child: const SizedBox(
+                height: 45,
+                child: ProfileWidget(text: "Language", Icon: (Icons.language))),
+          ),
           SizedBox(
             height: context.heightTransformer(dividedBy: 30),
           ),
-          const SizedBox(
-              height: 45,
-              child: ProfileWidget(text: "Setting", Icon: (Icons.settings))),
+          // const SizedBox(
+          //     height: 45,
+          //     child: ProfileWidget(text: "Setting", Icon: (Icons.settings))),
           SizedBox(
-            height: context.heightTransformer(dividedBy: 8),
+            height: context.heightTransformer(dividedBy: 6),
           ),
           Align(
             alignment: Alignment.bottomCenter,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import '../Constans.dart';
@@ -217,12 +218,17 @@ class _MapScreenState extends State<MapScreen> {
                       const SizedBox(
                         height: 15,
                       ),
-                      Text("Show more details",
-                          style: TextStyle(
-                              fontSize: 13.0,
-                              fontWeight: FontWeight.w400,
-                              fontFamily: "Inter",
-                              color: primaryColor)),
+                      InkWell(
+                        onTap: (){
+                          largerDetails();
+                        },
+                        child: Text("Show more details",
+                            style: TextStyle(
+                                fontSize: 13.0,
+                                fontWeight: FontWeight.w400,
+                                fontFamily: "Inter",
+                                color: primaryColor)),
+                      ),
                       const SizedBox(
                         height: 15,
                       ),
@@ -375,6 +381,260 @@ class _MapScreenState extends State<MapScreen> {
                             ],
                           ),
                         ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ));
+  }
+  void largerDetails() {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) => Align(
+              alignment: Alignment.bottomCenter,
+              child: Material(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(25)),
+                child: SizedBox(
+                  height: 600,
+                  width: 500,
+                  child: Column(
+                    children: [
+                      const SizedBox(
+                        height: 50,
+                      ),
+                      const Text(
+                        "Jane",
+                        style: TextStyle(
+                            fontSize: 25.0,
+                            fontWeight: FontWeight.w700,
+                            fontFamily: "Inter",
+                            color: Colors.black),
+                        textAlign: TextAlign.center,
+                      ),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      Text("Located on the school grounds",
+                          style: TextStyle(
+                              fontSize: 14.0,
+                              fontWeight: FontWeight.w400,
+                              fontFamily: "Inter",
+                              color: Colors.grey.shade500)),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      InkWell(
+                        onTap: (){
+                          Get.back();
+                        },
+                        child: Text("Show previous tracking",
+                            style: TextStyle(
+                                fontSize: 13.0,
+                                fontWeight: FontWeight.w400,
+                                fontFamily: "Inter",
+                                color: primaryColor)),
+                      ),
+                      const SizedBox(
+                        height: 40,
+                      ),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Container(
+                            height: 75,
+                            width: 380,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(15),
+                              color: Colors.white,
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.shade400,
+                                  offset: Offset(2 ,2 ),
+                                ),
+                              ]
+                            ),
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 20.0),
+                                  child: Image.asset("assets/Icons/pocess-icon.png"),
+                                ),
+                                const SizedBox(
+                                  width: 20,
+                                ),
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text("Tracking Completed",
+                                        style: TextStyle(
+                                            fontSize: 16.0,
+                                            fontWeight: FontWeight.w400,
+                                            fontFamily: "Inter",
+                                            color: Colors.black)),
+                                    const SizedBox(
+                                      height: 5,
+                                    ),
+                                    Text("17 min until the end",
+                                        style: TextStyle(
+                                            fontSize: 14.0,
+                                            fontWeight: FontWeight.w400,
+                                            fontFamily: "Inter",
+                                            color: Colors.grey.shade500)),
+                                  ],
+                                )
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 70.0),
+                            child: Align(
+                              alignment: Alignment.centerLeft,
+                              child: Container(
+                                height: 40,
+                                width: 1.4,
+                                color: Colors.grey.shade400,
+                              ),
+                            ),
+                          ),
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              const SizedBox(
+                                width: 25,
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 20.0),
+                                child: Image.asset("assets/Icons/grey_process.png"),
+                              ),
+                              const SizedBox(
+                                width: 20,
+                              ),
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text("Tracking Started",
+                                      style: TextStyle(
+                                          fontSize: 16.0,
+                                          fontWeight: FontWeight.w400,
+                                          fontFamily: "Inter",
+                                          color: Colors.grey.shade500)),
+                                  const SizedBox(
+                                    height: 5,
+                                  ),
+                                  Text("10:30 -",
+                                      style: TextStyle(
+                                          fontSize: 14.0,
+                                          fontWeight: FontWeight.w400,
+                                          fontFamily: "Inter",
+                                          color: Colors.grey.shade500)),
+                                ],
+                              )
+                            ],
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 70.0),
+                            child: Align(
+                              alignment: Alignment.centerLeft,
+                              child: Container(
+                                height: 40,
+                                width: 1.4,
+                                color: Colors.grey.shade400,
+                              ),
+                            ),
+                          ),
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              const SizedBox(
+                                width: 25,
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 20.0),
+                                child: Image.asset("assets/Icons/remain.png"),
+                              ),
+                              const SizedBox(
+                                width: 20,
+                              ),
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text("Driver Stopped",
+                                      style: TextStyle(
+                                          fontSize: 16.0,
+                                          fontWeight: FontWeight.w400,
+                                          fontFamily: "Inter",
+                                          color: Colors.grey.shade500)),
+                                  const SizedBox(
+                                    height: 5,
+                                  ),
+                                  Text("46 min before the start",
+                                      style: TextStyle(
+                                          fontSize: 14.0,
+                                          fontWeight: FontWeight.w400,
+                                          fontFamily: "Inter",
+                                          color: Colors.grey.shade500)),
+                                ],
+                              )
+                            ],
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 70.0),
+                            child: Align(
+                              alignment: Alignment.centerLeft,
+                              child: Container(
+                                height: 40,
+                                width: 1.4,
+                                color: Colors.grey.shade400,
+                              ),
+                            ),
+                          ),
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              const SizedBox(
+                                width: 25,
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 20.0),
+                                child: Image.asset("assets/Icons/remain.png"),
+                              ),
+                              const SizedBox(
+                                width: 20,
+                              ),
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text("Driver Stopped",
+                                      style: TextStyle(
+                                          fontSize: 16.0,
+                                          fontWeight: FontWeight.w400,
+                                          fontFamily: "Inter",
+                                          color: Colors.grey.shade500)),
+                                  const SizedBox(
+                                    height: 5,
+                                  ),
+                                  Text("120 min before the start",
+                                      style: TextStyle(
+                                          fontSize: 14.0,
+                                          fontWeight: FontWeight.w400,
+                                          fontFamily: "Inter",
+                                          color: Colors.grey.shade500)),
+                                ],
+                              )
+                            ],
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 20,
                       ),
                     ],
                   ),
